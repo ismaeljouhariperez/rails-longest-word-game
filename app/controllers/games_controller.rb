@@ -10,18 +10,37 @@ class GamesController < ApplicationController
 
   def score
     @word = params["word"]
-    letters = params["letters"]
-    testu = check_word(@word, letters) if word_exist?(@word)
-    raise
+    if word_exist?(@word)
+      @result = word_in_grid?(params["word"].upcase.chars, params["letters"].chars)
+    else
+      @result = "Sorry but #{params["word"]} does not seem to be a valid English word..."
+    end
+    # raise
   end
 
-  def check_word(word, grid)
+  def word_in_grid?(word_array, grid)
+    array = word_array.filter { |letter| grid.include?(letter) }
+    if !found_duplicates?(array.tally, grid.tally)
+      return "Congratulations, you scored #{array.length} points!"
+    else
+      return "Sorry but #{params["word"]} can't be built out of #{params["letters"]}"
+    end
+  end
+
+  def found_duplicates?(word_hashes, grid_hashes)
+    word_hashes.each do |key, value|
+      if grid_hashes[key] && value > grid_hashes[key]
+        return true
+      else
+        return false
+      end
+    end
   end
 
   def word_exist?(word)
     url = "https://dictionary.lewagon.com/#{word}"
     res = URI.open(url).read
-    JSON.parse(res)
+    JSON.parse(res)["found"]
   end
 
 end

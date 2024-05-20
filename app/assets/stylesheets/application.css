@@ -47,6 +47,11 @@
   border-radius: 5px;
 }
 
+.letter-box:hover{
+  background-color: #0056b3;
+  cursor: pointer;
+}
+
 .input-area {
   margin-top: 20px;
 }
@@ -70,4 +75,36 @@ button {
 
 button:hover {
   background-color: #0056b3;
+}
+
+/* styles.css */
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.message {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  text-decoration: none;
+  color: white;
+  background-color: #007BFF;
+  border-radius: 5px;
+  border: none;
+  opacity: .7;
+}
+
+.button:hover {
+  background-color: #0056b3;
+  opacity: 1;
 }

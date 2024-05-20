@@ -11,7 +11,6 @@
       <label for="word-input">What is the longest word you can find?</label>
       <input type="text" name="word">
       <input type="submit" value="Send" class="btn btn-primary">
-      // inpout hidden
       <%= hidden_field_tag 'letters', @letters %>
       <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
     </form>
